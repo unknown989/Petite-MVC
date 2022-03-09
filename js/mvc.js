@@ -1,5 +1,5 @@
+const HOSTPATH = "/Petite-MVC";
 class MVC{
-
     constructor(){
         this.routes = [];
         const alinks = document.getElementsByClassName("link");
@@ -22,7 +22,13 @@ class MVC{
         this.routes.push({name:name,to:to,path:path});
     };
     changeURL(pathname){
-        window.history.pushState({},'',pathname);
+        const path = pathname;
+        if(path[0] == "/"){
+            path = HOSTPATH+path
+        }else{
+            path = HOSTPATH+"/"+path;
+        }
+        window.history.pushState({},'',path);
         dispatchEvent(new Event("popstate"))
     };
     getRouteByPathname(to){
