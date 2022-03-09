@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            background: #444;
+            height: 100%;
+            width: 20vw;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: repeat(3, 33%);
+            align-items: center;
+            box-shadow: 5px 0px 9px #00000055;
+            border-right: 2px solid #00000055;
+        }
+
+        nav alink {
+            font-family: Roboto;
+            font-weight: lighter;
+            font-size: 40px;
+            color: aliceblue;
+            cursor: pointer;
+            text-align: center;
+            transition: 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        nav alink:hover {
+            font-weight: 300;
+        }
+
+        nav alink:active {
+            font-weight: 500;
+        }
+
+        #root {
+            position: absolute;
+            margin-left: 20vw;
+            top: 0%;
+            width: 80vw;
+            z-index: -1;
+            margin-top:0;
+            padding: 0;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <alink class="link" to="/">Home</alink>
+        <alink class="link" to="/about">About</alink>
+        <alink class="link" to="/contact">Contact</alink>
+    </nav>
+    <div id="root"></div>
+    <script src="./js/mvc.js"></script>
+    <script type='module'>
+        import Home from "./routes/home.js";
+        import About from "./routes/about.js";
+        import Contact from "./routes/contact.js";
+        const mvc = new MVC();
+        mvc.addRoute("home", "/", Home)
+        mvc.addRoute("about", "/about", About)
+        mvc.addRoute("contact", "/contact", Contact)
+    </script>
+</body>
+
+</html>
