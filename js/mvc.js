@@ -1,4 +1,4 @@
-const HOSTPATH = "/Petite-MVC/";
+const HOSTPATH = "/Petite-MVC";
 class MVC{
     constructor(){
         this.routes = [];
