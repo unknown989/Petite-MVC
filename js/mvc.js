@@ -1,4 +1,4 @@
-const HOSTPATH = "/Petite-MVC";
+const HOSTPATH = "/Petite-MVC/";
 class MVC{
     constructor(){
         this.routes = [];
@@ -22,7 +22,7 @@ class MVC{
         this.routes.push({name:name,to:to,path:path});
     };
     changeURL(pathname){
-        const path = pathname;
+        var path = pathname;
         if(path[0] == "/"){
             path = HOSTPATH+path
         }else{
