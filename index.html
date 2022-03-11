@@ -67,9 +67,9 @@
     <div id="root"></div>
     <script src="./js/mvc.js"></script>
     <script type='module'>
-        import Home from "/routes/home.js";
-        import About from "/routes/about.js";
-        import Contact from "/routes/contact.js";
+        import Home from "./routes/home.js";
+        import About from "./routes/about.js";
+        import Contact from "./routes/contact.js";
         const mvc = new MVC();
         mvc.addRoute("home", "./", Home)
         mvc.addRoute("about", "./about", About)
