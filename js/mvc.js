@@ -34,8 +34,10 @@ class MVC {
   }
   changeURL(pathname) {
     var path = pathname;
+    if (path[0] !== ".") {
+      path = path[0] === "/" ? "." + path : "./" + path;
+    }
 
-    path = `${path}`;
     window.history.pushState({}, "", path);
     dispatchEvent(new Event("historychange"));
   }
@@ -47,7 +49,7 @@ class MVC {
         tmp.pop();
         tto = tmp.slice(-1);
       }
-      const _r = this.routes.find((r) => r.to === "/"+tto[0]);
+      const _r = this.routes.find((r) => r.to === "/" + tto[0]);
       return _r;
     }
     return;
