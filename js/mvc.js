@@ -45,7 +45,7 @@ class MVC {
     if (to) {
       var tto = to.replace("/","").replace(hostpathname,"")
       console.log(tto);
-      const _r = this.routes.find((r) => r.to.replace("/","").includes(to));
+      const _r = this.routes.find((r) => r.to.replace("/","").includes(tto));
       return _r;
     }
     return;
