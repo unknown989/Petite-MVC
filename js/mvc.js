@@ -19,13 +19,14 @@ class MVC {
         this.changeURL(_route.to);
       });
     });
-    window.onpopstate = (e) => {
+    window.addEventListener("historychange",(e) => {
       const root = document.getElementById("root");
       const _route = this.getRouteByPathname(window.location.pathname);
+      console.log(_route)
       root.innerHTML = _route.path();
-    };
+    });
     window.onload = () => {
-      dispatchEvent(new Event("popstate"));
+      dispatchEvent(new Event("historychange"));
     };
   }
   addRoute(name, to, path) {
@@ -37,7 +38,7 @@ class MVC {
     path = `${hostpathname}${path}`;
     console.log(path);
     window.history.pushState({}, "", path);
-    dispatchEvent(new Event("popstate"));
+    dispatchEvent(new Event("historychange"));
   }
   getRouteByPathname(to) {
     if (to) {
