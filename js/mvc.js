@@ -3,6 +3,7 @@ var hostpathname = "";
   var tmp = window.location.pathname.split("/");
   hostpathname = tmp.slice(-1);
   if (hostpathname == "") {
+    tmp.pop();
     hostpathname = tmp.slice(-1);
   }
 }
@@ -19,10 +20,9 @@ class MVC {
         this.changeURL(_route.to);
       });
     });
-    window.addEventListener("historychange",(e) => {
+    window.addEventListener("historychange", (e) => {
       const root = document.getElementById("root");
       const _route = this.getRouteByPathname(window.location.pathname);
-      console.log(_route)
       root.innerHTML = _route.path();
     });
     window.onload = () => {
@@ -31,20 +31,25 @@ class MVC {
   }
   addRoute(name, to, path) {
     this.routes.push({ name: name, to: to, path: path });
-    console.log(this.routes);
   }
   changeURL(pathname) {
     var path = pathname;
 
     path = `${hostpathname}${path}`;
-    console.log(path);
     window.history.pushState({}, "", path);
     dispatchEvent(new Event("historychange"));
   }
   getRouteByPathname(to) {
     if (to) {
-      const _r = this.routes.find((r) => r.to === to);
+      var tmp = to.split("/");
+      var tto = tmp.slice(-1);
+      if (tto == "") {
+        tmp.pop();
+        tto = tmp.slice(-1);
+      }
+      const _r = this.routes.find((r) => r.to === "/"+tto[0]);
       return _r;
     }
+    return;
   }
 }
