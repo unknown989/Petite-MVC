@@ -60,9 +60,9 @@
 
 <body>
     <nav>
-        <alink class="link" to="./">Home</alink>
-        <alink class="link" to="./about">About</alink>
-        <alink class="link" to="./contact">Contact</alink>
+        <alink class="link" to="/">Home</alink>
+        <alink class="link" to="/about">About</alink>
+        <alink class="link" to="/contact">Contact</alink>
     </nav>
     <div id="root"></div>
     <script src="./js/mvc.js"></script>
@@ -71,9 +71,9 @@
         import About from "./routes/about.js";
         import Contact from "./routes/contact.js";
         const mvc = new MVC();
-        mvc.addRoute("home", "./", Home)
-        mvc.addRoute("about", "./about", About)
-        mvc.addRoute("contact", "./contact", Contact)
+        mvc.addRoute("home", "/", Home)
+        mvc.addRoute("about", "/about", About)
+        mvc.addRoute("contact", "/contact", Contact)
     </script>
 </body>
 
