@@ -1,10 +1,10 @@
 var hostpathname = "";
 {
   var tmp = window.location.pathname.split("/");
-  hostpathname = tmp.slice(-1);
+  hostpathname = tmp.slice(-1)[0];
   if (hostpathname == "") {
     tmp.pop();
-    hostpathname = tmp.slice(-1);
+    hostpathname = tmp.slice(-1)[0];
   }
 }
 class MVC {
@@ -43,13 +43,9 @@ class MVC {
   }
   getRouteByPathname(to) {
     if (to) {
-      var tmp = to.split("/");
-      var tto = tmp.slice(-1);
-      if (tto == "") {
-        tmp.pop();
-        tto = tmp.slice(-1);
-      }
-      const _r = this.routes.find((r) => r.to.includes(tto[0]));
+      var tto = to.replace(hostpathname,"")
+      console.log(tto);
+      const _r = this.routes.find((r) => r.to.includes(to));
       return _r;
     }
     return;
