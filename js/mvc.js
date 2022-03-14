@@ -31,6 +31,7 @@ class MVC {
   }
   addRoute(name, to, path) {
     this.routes.push({ name: name, to: to, path: path });
+    console.log(this.routes);
   }
   changeURL(pathname) {
     var path = pathname;
