@@ -35,7 +35,7 @@ class MVC {
   changeURL(pathname) {
     var path = pathname;
 
-    path = `${hostpathname}${path}`;
+    path = `${path}`;
     window.history.pushState({}, "", path);
     dispatchEvent(new Event("historychange"));
   }
