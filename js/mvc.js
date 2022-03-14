@@ -43,7 +43,7 @@ class MVC {
   }
   getRouteByPathname(to) {
     if (to) {
-      var tto = to.replace(hostpathname,"")
+      var tto = to.replace.replace("/","").replace(hostpathname,"")
       console.log(tto);
       const _r = this.routes.find((r) => r.to.includes(to));
       return _r;
