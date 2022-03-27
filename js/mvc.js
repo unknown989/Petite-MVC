@@ -1,3 +1,4 @@
+'use strict'
 var hostpathname = "";
 {
   var tmp = window.location.pathname.split("/");
