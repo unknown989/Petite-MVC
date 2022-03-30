@@ -1,7 +1,16 @@
 'use strict'
 var hostpathname = "";
+const removeindexpage = (arr) => {
+  // TO AVOID INDEX.HTML CONFLICTS
+  var indexpath = arr.findIndex((t) => t.indexOf("index") > -1);
+  if (indexpath > -1) {
+    arr.splice(indexpath, 1);
+  }
+};
 {
   var tmp = window.location.pathname.split("/");
+  removeindexpage(tmp);
+
   hostpathname = tmp.slice(-1)[0];
   if (hostpathname == "") {
     tmp.pop();
@@ -33,6 +42,9 @@ class MVC {
   addRoute(name, to, path) {
     this.routes.push({ name: name, to: to, path: path });
   }
+  getRoutes() {
+    return this.routes;
+  }
   changeURL(pathname) {
     var path = pathname;
     if (path[0] !== ".") {
@@ -44,7 +56,11 @@ class MVC {
   }
   getRouteByPathname(to) {
     if (to) {
-      var tto = to.replace("/","").replace(hostpathname,"")
+      // TO AVOID INDEX.HTML CONFLICTS
+      if (to.indexOf("index.") > -1) {
+        to = "/";
+      }
+      var tto = to.replace("/", "").replace(hostpathname, "");
       const _r = this.routes.find((r) => r.to.includes(tto));
       return _r;
     }
